@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "lib": ["ES6", "DOM"],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "../dist/cjs",
+    "target": "ES6"
+  }
+}
