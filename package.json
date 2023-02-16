@@ -4,6 +4,9 @@
   "description": "Focus management for the DOM",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "npm run build:cjs && npm run build:es",
     "build:cjs": "tsc -p ./config/tsconfig.cjs.json",
