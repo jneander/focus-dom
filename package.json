@@ -18,6 +18,7 @@
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build",
     "test": "./scripts/test.js",
     "test:head": "npm run test -- --no-headless",
     "test:head:watch": "npm run test -- --no-headless --watch",
@@ -37,6 +38,11 @@
   ],
   "author": "Jeremy Neander <jeremy.neander@gmail.com>",
   "license": "MIT",
+  "release": {
+    "extends": [
+      "@jneander/semantic-release-config"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/jneander/focus-dom/issues"
   },
@@ -48,6 +54,7 @@
     "@babel/runtime-corejs3": "^7.12.13",
     "@jneander/dev-utils-node": "^2.0.0",
     "@jneander/prettier-config": "^1.0.0",
+    "@jneander/semantic-release-config": "^1.0.1",
     "@jneander/spec-utils-dom": "^2.0.0",
     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.1",
