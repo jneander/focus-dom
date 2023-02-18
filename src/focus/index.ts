@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import {FocusTracker} from '../focus-tracker'
 import {Reconciliation} from '../reconciliation'
 import {Regions} from '../regions'

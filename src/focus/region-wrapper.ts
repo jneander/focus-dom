@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 export class RegionWrapper {
   constructor(focus, region) {
     this._focus = focus

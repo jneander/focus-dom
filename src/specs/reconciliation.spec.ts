@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import {createContainer, renderString} from '@jneander/spec-utils-dom'
 
 import {Regions} from '../regions'
@@ -11,11 +14,7 @@ describe('Reconciliation', () => {
   beforeEach(() => {
     $container = createContainer()
 
-    regions = new Regions({
-      onRegionBlur() {},
-      onRegionFocus() {},
-    })
-
+    regions = new Regions({})
     reconciliation = new Reconciliation(regions)
   })
 

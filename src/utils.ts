@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 export function findLast(array, conditionFn) {
   for (let i = array.length - 1; i >= 0; i--) {
     if (conditionFn(array[i])) {
