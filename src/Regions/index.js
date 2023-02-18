@@ -4,7 +4,7 @@ export default class Regions {
   constructor(config) {
     this._config = {
       onRegionBlur: config.onRegionBlur || (() => {}),
-      onRegionFocus: config.onRegionFocus || (() => {})
+      onRegionFocus: config.onRegionFocus || (() => {}),
     }
 
     this._regionList = []
@@ -78,7 +78,7 @@ export default class Regions {
 
     return !this._regionList.some(
       _region =>
-        _region !== region && !_region.containsRegion(region) && _region.containsElement($element)
+        _region !== region && !_region.containsRegion(region) && _region.containsElement($element),
     )
   }
 
@@ -94,7 +94,7 @@ export default class Regions {
 
   getChildRegions(region) {
     const childRegions = this._regionList.filter(
-      _region => _region !== region && region.containsRegion(_region)
+      _region => _region !== region && region.containsRegion(_region),
     )
 
     // Using the index, mark where a region is a confirmed grandchild.
@@ -150,7 +150,7 @@ export default class Regions {
       if (childRegion.$container != null && childRegion.isFallbackRegion) {
         fallbacks.push({
           $element: childRegion.$container,
-          fallbackOrder: childRegion.fallbackOrder
+          fallbackOrder: childRegion.fallbackOrder,
         })
       }
     })

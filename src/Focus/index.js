@@ -6,7 +6,7 @@ import RegionWrapper from './RegionWrapper'
 export default class Focus {
   constructor() {
     this.regions = new Regions({
-      onRegionFocus: this._onRegionFocus.bind(this)
+      onRegionFocus: this._onRegionFocus.bind(this),
     })
     this.reconciliation = new Reconciliation(this.regions)
     this.focusTracker = new FocusTracker(this.regions)

@@ -30,7 +30,7 @@ export default class FocusTracker {
       this._rootFocus = {
         $element,
         lineage: this._regions.getRegionLineage(region),
-        region
+        region,
       }
     } else {
       _currentFocus.$element = $element

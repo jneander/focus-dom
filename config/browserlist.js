@@ -5,5 +5,5 @@ module.exports = [
   'last 2 ios versions',
   'last 2 opera versions',
   'last 2 safari versions',
-  'last 2 ChromeAndroid versions'
+  'last 2 ChromeAndroid versions',
 ]

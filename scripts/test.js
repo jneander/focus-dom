@@ -29,7 +29,7 @@ process.exit(
   runCommandSync(
     buildCommand('karma', args, {
       NODE_ENV: 'test',
-      NODE_OPTIONS: '--max_old_space_size=4096'
-    })
-  ).status
+      NODE_OPTIONS: '--max_old_space_size=4096',
+    }),
+  ).status,
 )
