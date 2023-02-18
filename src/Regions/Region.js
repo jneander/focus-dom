@@ -1,4 +1,4 @@
-export default class Region {
+export class Region {
   constructor($container, {fallbackOrder = 0, fallbackRegion = true} = {}) {
     this.setContainer($container)
     this._fallbacks = []

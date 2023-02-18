@@ -1,4 +1,4 @@
-export default class RegionWrapper {
+export class RegionWrapper {
   constructor(focus, region) {
     this._focus = focus
     this._region = region

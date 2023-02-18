@@ -1,6 +1,6 @@
-import Region from './Region'
+import {Region} from './Region'
 
-export default class Regions {
+export class Regions {
   constructor(config) {
     this._config = {
       onRegionBlur: config.onRegionBlur || (() => {}),

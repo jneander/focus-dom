@@ -1,7 +1,7 @@
 import {createContainer, renderString} from '@jneander/spec-utils-dom'
 import sinon from 'sinon'
 
-import Regions from '.'
+import {Regions} from '.'
 
 describe('Regions', () => {
   let $container
