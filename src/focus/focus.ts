@@ -1,7 +1,6 @@
 import {FocusTracker} from '../focus-tracker'
 import {Reconciliation} from '../reconciliation'
-import {Regions} from '../regions/regions'
-import type {Region, RegionOptions} from '../regions/region'
+import {Region, RegionOptions, Regions} from '../regions'
 import {RegionWrapper} from './region-wrapper'
 
 export class Focus {
