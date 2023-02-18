@@ -1,7 +1,6 @@
 import {createContainer, renderString} from '@jneander/spec-utils-dom'
 
-import {RegionWrapper} from '../focus/region-wrapper'
-import {Focus} from '..'
+import {Focus, RegionWrapper} from '../focus'
 
 describe('Region options', () => {
   let $container: HTMLElement

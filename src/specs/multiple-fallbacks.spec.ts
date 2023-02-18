@@ -1,7 +1,6 @@
 import {createContainer, renderString} from '@jneander/spec-utils-dom'
 
-import type {RegionWrapper} from '../focus/region-wrapper'
-import {Focus} from '..'
+import {Focus, RegionWrapper} from '../focus'
 
 describe('Multiple fallbacks', () => {
   let $container: HTMLElement

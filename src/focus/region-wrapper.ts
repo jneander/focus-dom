@@ -1,5 +1,5 @@
-import type {Region} from '../regions/region'
-import {FallbackOptions} from '../types'
+import type {Region} from '../regions'
+import type {FallbackOptions} from '../types'
 import type {Focus} from './focus'
 
 export class RegionWrapper {
