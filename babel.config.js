@@ -4,7 +4,7 @@ module.exports = {
       '@babel/preset-env',
 
       {
-        modules: false,
+        modules: process.env.CJS ? 'commonjs' : false,
 
         targets: {
           browsers: [

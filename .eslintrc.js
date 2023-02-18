@@ -26,7 +26,13 @@ module.exports = {
         node: true,
       },
 
-      files: ['./config/**/*.js', './scripts/**/*.js', './babel.config.js', './.eslintrc.js'],
+      files: [
+        './config/**/*.js',
+        './scripts/**/*.js',
+        './babel.config.js',
+        './babel.build.js',
+        './.eslintrc.js',
+      ],
     },
 
     {
