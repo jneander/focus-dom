@@ -17,7 +17,7 @@ describe('Regions', () => {
 
     regions = new Regions({
       onRegionBlur,
-      onRegionFocus
+      onRegionFocus,
     })
   })
 
@@ -415,7 +415,7 @@ describe('Regions', () => {
         b2: regions.addRegion(get('container-b2')),
         c: regions.addRegion(get('container-c')),
         d: regions.addRegion(get('container-d')),
-        x: regions.addRegion(get('container-x'))
+        x: regions.addRegion(get('container-x')),
       }
     })
 
@@ -504,7 +504,7 @@ describe('Regions', () => {
         b2: regions.addRegion(get('container-b2')),
         c1: regions.addRegion(get('container-c1')),
         c2: regions.addRegion(get('container-c2')),
-        c3: regions.addRegion(get('container-c3'))
+        c3: regions.addRegion(get('container-c3')),
       }
     })
 
@@ -573,7 +573,7 @@ describe('Regions', () => {
 
       regionMap = {
         a: regions.addRegion(get('container-a')),
-        b: regions.addRegion(get('container-b'))
+        b: regions.addRegion(get('container-b')),
       }
     })
 
@@ -617,7 +617,7 @@ describe('Regions', () => {
         b2: regions.addRegion(get('container-b2')),
         c1: regions.addRegion(get('container-c1')),
         c2: regions.addRegion(get('container-c2')),
-        c3: regions.addRegion(get('container-c3'))
+        c3: regions.addRegion(get('container-c3')),
       }
     })
 

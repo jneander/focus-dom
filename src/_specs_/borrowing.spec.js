@@ -799,7 +799,7 @@ describe('Borrowing focus', () => {
 
           expect(getFocusedElementId()).to.equal('child-button-b1')
         })
-      }
+      },
     )
   })
 

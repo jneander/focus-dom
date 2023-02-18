@@ -7,22 +7,22 @@ const presets = [
     {
       corejs: {
         proposals: false,
-        version: 3
+        version: 3,
       },
 
       modules: false,
 
       targets: {
         browsers: require('./browserlist'),
-        node: 'current'
+        node: 'current',
       },
 
-      useBuiltIns: 'usage'
-    }
-  ]
+      useBuiltIns: 'usage',
+    },
+  ],
 ]
 
 module.exports = {
   plugins,
-  presets
+  presets,
 }

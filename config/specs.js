@@ -15,7 +15,7 @@ const CHROME_FLAGS = [
   '--disable-extensions',
   '--use-fake-ui-for-media-stream',
   '--use-fake-device-for-media-stream',
-  '--allow-file-access-from-files'
+  '--allow-file-access-from-files',
 ]
 
 const pattern = getString('pattern', 'src/**/*.spec.js')
@@ -24,13 +24,13 @@ const files = [
   'spec-support/index.js',
   {
     pattern,
-    watched: false
-  }
+    watched: false,
+  },
 ]
 
 const preprocessors = {
   'src/**/*.spec.js': ['webpack', 'sourcemap'],
-  'spec-support/index.js': ['webpack', 'sourcemap']
+  'spec-support/index.js': ['webpack', 'sourcemap'],
 }
 
 const browsers = []
@@ -65,8 +65,8 @@ module.exports = function configure(config) {
     client: {
       mocha: {
         slow: 500,
-        timeout: 1000
-      }
+        timeout: 1000,
+      },
     },
 
     colors: true,
@@ -75,7 +75,7 @@ module.exports = function configure(config) {
       CustomChrome: {
         base: 'Chrome',
 
-        flags: CHROME_FLAGS
+        flags: CHROME_FLAGS,
       },
 
       CustomChromeHeadless: {
@@ -85,9 +85,9 @@ module.exports = function configure(config) {
           '-incognito',
           '--headless',
           '--disable-gpu',
-          '--remote-debugging-port=9222'
-        ])
-      }
+          '--remote-debugging-port=9222',
+        ]),
+      },
     },
 
     files,
@@ -98,15 +98,15 @@ module.exports = function configure(config) {
     reporters: ['spec'],
 
     webpackServer: {
-      noInfo: true
+      noInfo: true,
     },
 
     webpack: {
       ...webpack,
 
       output: {
-        path: path.join(os.tmpdir(), `${packageName}_specs_${Date.now()}`)
-      }
-    }
+        path: path.join(os.tmpdir(), `${packageName}_specs_${Date.now()}`),
+      },
+    },
   })
 }

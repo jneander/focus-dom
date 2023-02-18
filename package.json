@@ -9,10 +9,10 @@
     "build:production": "build-lib",
     "build:watch": "build-lib --watch",
     "clean": "clean",
-    "format": "npm run format:js",
-    "format:js": "format-js --pattern './src/**/*.js'",
     "lint:js:fix": "lint-js --fix --pattern './src/**/*.js'",
     "lint:js:test": "lint-js --test --pattern './src/**/*.js'",
+    "lint:prettier": "prettier --check .",
+    "lint:prettier:fix": "prettier --write .",
     "test": "./scripts/test.js",
     "test:head": "npm run test -- --no-headless",
     "test:head:watch": "npm run test -- --no-headless --watch",
@@ -41,6 +41,7 @@
     "@jneander/dev-build": "^1.0.1",
     "@jneander/dev-lint": "^1.0.1",
     "@jneander/dev-utils-node": "^1.0.1",
+    "@jneander/prettier-config": "^1.0.0",
     "@jneander/spec-utils-dom": "^1.1.2",
     "babel-loader": "^8.2.2",
     "chai": "^4.3.0",
@@ -52,9 +53,11 @@
     "karma-spec-reporter": "^0.0.32",
     "karma-webpack": "^5.0.0",
     "mocha": "^8.2.1",
+    "prettier": "^2.8.4",
     "process": "^0.11.10",
     "sinon": "^9.2.4",
     "util": "^0.12.3",
     "webpack": "^5.21.1"
-  }
+  },
+  "prettier": "@jneander/prettier-config"
 }

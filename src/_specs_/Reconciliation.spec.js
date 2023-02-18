@@ -13,7 +13,7 @@ describe('Reconciliation', () => {
 
     regions = new Regions({
       onRegionBlur() {},
-      onRegionFocus() {}
+      onRegionFocus() {},
     })
 
     reconciliation = new Reconciliation(regions)
@@ -199,7 +199,7 @@ describe('Reconciliation', () => {
           it('returns the parent fallback when assigned', () => {
             regionMap.parent.setFallback(get('parent-fallback'))
             expect(reconciliation.getElementToFocus(regionMap.parent)).to.equal(
-              get('parent-fallback')
+              get('parent-fallback'),
             )
           })
 
@@ -246,7 +246,7 @@ describe('Reconciliation', () => {
           regionMap.childA.setFallback(get('child-fallback-a'))
           regionMap.childB.setFallback(get('child-fallback-b'))
           expect(reconciliation.getElementToFocus(regionMap.childA)).to.equal(
-            get('child-fallback-a')
+            get('child-fallback-a'),
           )
         })
 
@@ -254,7 +254,7 @@ describe('Reconciliation', () => {
           regionMap.parent.setFallback(get('parent-fallback'))
           regionMap.childB.setFallback(get('child-fallback-b'))
           expect(reconciliation.getElementToFocus(regionMap.childA)).to.equal(
-            get('parent-fallback')
+            get('parent-fallback'),
           )
         })
 
@@ -267,7 +267,7 @@ describe('Reconciliation', () => {
            */
           regionMap.childB.setFallback(get('child-fallback-b'))
           expect(reconciliation.getElementToFocus(regionMap.childA)).to.equal(
-            get('child-fallback-b')
+            get('child-fallback-b'),
           )
         })
 
@@ -292,7 +292,7 @@ describe('Reconciliation', () => {
           regionMap.childA.setFallback(get('child-fallback-a'))
           regionMap.childB.setFallback(get('child-fallback-b'))
           expect(reconciliation.getElementToFocus(regionMap.parent)).to.equal(
-            get('parent-fallback')
+            get('parent-fallback'),
           )
         })
 
@@ -301,21 +301,21 @@ describe('Reconciliation', () => {
           regionMap.childB.setFallback(get('child-fallback-b'))
           expect(reconciliation.getElementToFocus(regionMap.parent)).to.be.oneOf([
             get('child-fallback-a'),
-            get('child-fallback-b')
+            get('child-fallback-b'),
           ])
         })
 
         it('returns the fallback of an earlier child when a later child has no fallback', () => {
           regionMap.childA.setFallback(get('child-fallback-a'))
           expect(reconciliation.getElementToFocus(regionMap.parent)).to.equal(
-            get('child-fallback-a')
+            get('child-fallback-a'),
           )
         })
 
         it('returns the fallback of a later child when an earlier child has no fallback', () => {
           regionMap.childB.setFallback(get('child-fallback-b'))
           expect(reconciliation.getElementToFocus(regionMap.parent)).to.equal(
-            get('child-fallback-b')
+            get('child-fallback-b'),
           )
         })
 
@@ -325,7 +325,7 @@ describe('Reconciliation', () => {
           regionMap.childA.setFallback(get('child-fallback-a'))
           regionMap.childB.setFallback(get('child-fallback-b'))
           expect(reconciliation.getElementToFocus(regionMap.parent)).to.equal(
-            get('child-fallback-a')
+            get('child-fallback-a'),
           )
         })
 
@@ -335,7 +335,7 @@ describe('Reconciliation', () => {
           regionMap.childA.setFallback(get('child-fallback-a'))
           regionMap.childB.setFallback(get('child-fallback-b'))
           expect(reconciliation.getElementToFocus(regionMap.parent)).to.equal(
-            get('child-fallback-b')
+            get('child-fallback-b'),
           )
         })
 
@@ -357,7 +357,7 @@ describe('Reconciliation', () => {
           it('returns the fallback of the other child when assigned', () => {
             regionMap.childB.setFallback(get('child-fallback-b'))
             expect(reconciliation.getElementToFocus(regionMap.parent)).to.equal(
-              get('child-fallback-b')
+              get('child-fallback-b'),
             )
           })
 
@@ -375,7 +375,7 @@ describe('Reconciliation', () => {
           it('returns the fallback of the other child when assigned', () => {
             regionMap.childB.setFallback(get('child-fallback-b'))
             expect(reconciliation.getElementToFocus(regionMap.parent)).to.equal(
-              get('child-fallback-b')
+              get('child-fallback-b'),
             )
           })
 
@@ -432,14 +432,14 @@ describe('Reconciliation', () => {
       it('falls back through regions without fallbacks', () => {
         regionMap.grandparent.setFallback(get('grandparent-fallback'))
         expect(reconciliation.getElementToFocus(regionMap.grandchild)).to.equal(
-          get('grandparent-fallback')
+          get('grandparent-fallback'),
         )
       })
 
       it('falls forward through regions with container fallbacks', () => {
         regionMap.grandchild.setFallback(get('grandchild-fallback'))
         expect(reconciliation.getElementToFocus(regionMap.grandparent)).to.equal(
-          get('grandchild-fallback')
+          get('grandchild-fallback'),
         )
       })
 
@@ -452,7 +452,7 @@ describe('Reconciliation', () => {
          */
         regionMap.grandparent.setFallback(get('grandparent-fallback'))
         expect(reconciliation.getElementToFocus(regionMap.parent)).to.equal(
-          get('grandparent-fallback')
+          get('grandparent-fallback'),
         )
       })
     })
@@ -511,7 +511,7 @@ describe('Reconciliation', () => {
          */
         regionMap.grandchildB.setFallback(get('grandchild-fallback-b'))
         expect(reconciliation.getElementToFocus(regionMap.childA)).to.equal(
-          get('grandchild-fallback-b')
+          get('grandchild-fallback-b'),
         )
       })
 
@@ -527,7 +527,7 @@ describe('Reconciliation', () => {
          *   Grandparent (has fallback button)
          */
         expect(reconciliation.getElementToFocus(regionMap.childA)).to.equal(
-          get('grandparent-fallback')
+          get('grandparent-fallback'),
         )
       })
     })
