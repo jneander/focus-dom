@@ -1,16 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
 import {createContainer, renderString} from '@jneander/spec-utils-dom'
-import sinon from 'sinon'
+import sinon, {SinonStub} from 'sinon'
 
 import {Regions} from '.'
+import {Region} from './region'
 
 describe('Regions', () => {
-  let $container
-  let onRegionBlur
-  let onRegionFocus
-  let regions
+  let $container: HTMLElement
+  let onRegionBlur: SinonStub
+  let onRegionFocus: SinonStub
+  let regions: Regions
 
   beforeEach(() => {
     $container = createContainer()
@@ -28,11 +26,11 @@ describe('Regions', () => {
     $container.remove()
   })
 
-  function render(html) {
+  function render(html: string) {
     renderString(html, $container)
   }
 
-  function get(elementId) {
+  function get(elementId: string): HTMLElement {
     return $container.querySelector(`#${elementId}`)
   }
 
@@ -142,7 +140,7 @@ describe('Regions', () => {
     })
 
     context('when the given container already belongs to a region', () => {
-      let existingRegion
+      let existingRegion: Region
 
       beforeEach(() => {
         render(`
@@ -257,7 +255,7 @@ describe('Regions', () => {
     })
 
     context('when called', () => {
-      let region
+      let region: Region
 
       beforeEach(() => {
         render(`
@@ -296,7 +294,7 @@ describe('Regions', () => {
     })
 
     context('when called', () => {
-      let region
+      let region: Region
 
       beforeEach(() => {
         render(`
@@ -360,8 +358,8 @@ describe('Regions', () => {
   })
 
   describe('#regionOwnsElement()', () => {
-    let region1
-    let region2
+    let region1: Region
+    let region2: Region
 
     beforeEach(() => {
       render(`
@@ -392,7 +390,7 @@ describe('Regions', () => {
   })
 
   describe('#getRegionLineage()', () => {
-    let regionMap
+    let regionMap: Record<string, Region>
 
     beforeEach(() => {
       render(`
@@ -448,9 +446,9 @@ describe('Regions', () => {
   })
 
   describe('#getParentRegion()', () => {
-    let region1
-    let region2
-    let region3
+    let region1: Region
+    let region2: Region
+    let region3: Region
 
     beforeEach(() => {
       render(`
@@ -481,7 +479,7 @@ describe('Regions', () => {
   })
 
   describe('#getChildRegions()', () => {
-    let regionMap
+    let regionMap: Record<string, Region>
 
     beforeEach(() => {
       render(`
@@ -528,7 +526,7 @@ describe('Regions', () => {
   })
 
   describe('#getRegionForContainer()', () => {
-    let region
+    let region: Region
 
     beforeEach(() => {
       render(`
@@ -557,7 +555,7 @@ describe('Regions', () => {
   })
 
   describe('#getRegionOwnerForElement()', () => {
-    let regionMap
+    let regionMap: Record<string, Region>
 
     beforeEach(() => {
       render(`
@@ -594,7 +592,7 @@ describe('Regions', () => {
   })
 
   describe('#getFallbacksForRegion()', () => {
-    let regionMap
+    let regionMap: Record<string, Region>
 
     beforeEach(() => {
       render(`

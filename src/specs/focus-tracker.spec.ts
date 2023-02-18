@@ -1,6 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
 import sinon from 'sinon'
 
 import {FocusTracker} from '../focus-tracker'
@@ -8,8 +5,8 @@ import {Region} from '../regions/region'
 import {Regions} from '../regions'
 
 describe('FocusTracker', () => {
-  let regions
-  let tracker
+  let regions: Regions
+  let tracker: FocusTracker
 
   beforeEach(() => {
     regions = new Regions({})

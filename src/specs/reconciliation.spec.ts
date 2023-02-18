@@ -1,15 +1,13 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
 import {createContainer, renderString} from '@jneander/spec-utils-dom'
 
-import {Regions} from '../regions'
 import {Reconciliation} from '../reconciliation'
+import {Regions} from '../regions'
+import {Region} from '../regions/region'
 
 describe('Reconciliation', () => {
-  let $container
-  let reconciliation
-  let regions
+  let $container: HTMLElement
+  let reconciliation: Reconciliation
+  let regions: Regions
 
   beforeEach(() => {
     $container = createContainer()
@@ -22,16 +20,16 @@ describe('Reconciliation', () => {
     $container.remove()
   })
 
-  function render(htmlString) {
+  function render(htmlString: string) {
     renderString(htmlString, $container)
   }
 
-  function get(elementId) {
+  function get(elementId: string): HTMLElement {
     return $container.querySelector(`#${elementId}`)
   }
 
   describe('#getElementToFocus()', () => {
-    let regionMap
+    let regionMap: Record<string, Region>
 
     beforeEach(() => {
       regionMap = {}

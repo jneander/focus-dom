@@ -1,12 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
+import type {Regions} from './regions'
+import type {Region} from './regions/region'
 
 export class Reconciliation {
-  constructor(regions) {
+  private _regions: Regions
+
+  constructor(regions: Regions) {
     this._regions = regions
   }
 
-  getElementToFocus(startingRegion) {
+  getElementToFocus(startingRegion: Region | null) {
     if (startingRegion == null) {
       return undefined
     }
@@ -16,7 +18,7 @@ export class Reconciliation {
 
   // PRIVILEGED
 
-  _fallIntoRegion(region, exploredRegions = []) {
+  _fallIntoRegion(region: Region, exploredRegions: Region[] = []): HTMLElement | undefined {
     if (exploredRegions.includes(region)) {
       return this._fallBackToParentRegion(region, exploredRegions)
     }
@@ -42,7 +44,7 @@ export class Reconciliation {
     return this._fallBackToParentRegion(region, updatedRegions)
   }
 
-  _fallBackToParentRegion(region, exploredRegions) {
+  _fallBackToParentRegion(region: Region, exploredRegions: Region[]): HTMLElement | undefined {
     const parentRegion = this._regions.getParentRegion(region)
     if (parentRegion != null) {
       return this._fallIntoRegion(parentRegion, exploredRegions)
