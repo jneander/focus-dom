@@ -1,4 +1,4 @@
-import type {Regions} from './regions'
+import type {Regions} from './regions/regions'
 import type {Region} from './regions/region'
 import {findLastIndex} from './utils'
 

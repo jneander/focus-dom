@@ -2,7 +2,7 @@ import sinon from 'sinon'
 
 import {FocusTracker} from '../focus-tracker'
 import {Region} from '../regions/region'
-import {Regions} from '../regions'
+import {Regions} from '../regions/regions'
 
 describe('FocusTracker', () => {
   let regions: Regions
