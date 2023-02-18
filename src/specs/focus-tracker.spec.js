@@ -1,8 +1,8 @@
 import sinon from 'sinon'
 
-import {FocusTracker} from '../FocusTracker'
-import {Region} from '../Regions/Region'
-import {Regions} from '../Regions'
+import {FocusTracker} from '../focus-tracker'
+import {Region} from '../regions/region'
+import {Regions} from '../regions'
 
 describe('FocusTracker', () => {
   let regions
