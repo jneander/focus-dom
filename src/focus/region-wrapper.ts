@@ -1,51 +1,55 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
+import type {Region} from '../regions/region'
+import {FallbackOptions} from '../types'
+import type {Focus} from '.'
 
 export class RegionWrapper {
-  constructor(focus, region) {
+  private _focus: Focus
+  private _region: Region
+
+  constructor(focus: Focus, region: Region) {
     this._focus = focus
     this._region = region
   }
 
-  get $container() {
+  get $container(): HTMLElement {
     return this._region.$container
   }
 
-  setContainer($element) {
+  setContainer($element: HTMLElement): void {
     this._region.setContainer($element)
   }
 
-  get $fallbacks() {
+  get $fallbacks(): HTMLElement[] {
     return this._region.$fallbacks
   }
 
-  setFallback($element, options) {
+  setFallback($element: HTMLElement, options?: FallbackOptions): void {
     this._region.setFallback($element, options)
   }
 
-  borrowFocus($element) {
+  borrowFocus($element: HTMLElement): void {
     this._focus.borrowFocus(this._region, $element)
   }
 
-  releaseFocus() {
+  releaseFocus(): void {
     this._focus.releaseFocus(this._region)
   }
 
-  reconcile() {
+  reconcile(): void {
     this._focus.reconcile()
   }
 
-  remove() {
+  remove(): void {
     this._focus.removeRegion(this._region)
   }
 
   // move to Regions?
-  containsElement($element) {
+  containsElement($element: HTMLElement): boolean {
     return this._region.containsElement($element)
   }
 
   // move to Regions?
-  containsRegion(region) {
+  containsRegion(region: Region): boolean {
     return this._region.containsRegion(region)
   }
 }

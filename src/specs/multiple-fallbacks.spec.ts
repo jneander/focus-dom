@@ -1,14 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
 import {createContainer, renderString} from '@jneander/spec-utils-dom'
 
+import type {RegionWrapper} from '../focus/region-wrapper'
 import {Focus} from '..'
 
 describe('Multiple fallbacks', () => {
-  let $container
-  let focus
-  let regionMap
+  let $container: HTMLElement
+  let focus: Focus
+  let regionMap: Record<string, RegionWrapper>
 
   beforeEach(() => {
     $container = createContainer()
@@ -20,11 +18,11 @@ describe('Multiple fallbacks', () => {
     $container.remove()
   })
 
-  function get(elementId) {
+  function get(elementId: string) {
     return document.getElementById(elementId)
   }
 
-  function render(htmlString) {
+  function render(htmlString: string) {
     renderString(htmlString, $container)
   }
 

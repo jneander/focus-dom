@@ -4,6 +4,7 @@
   "description": "Focus management for the DOM",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "files": [
     "dist"
   ],
@@ -20,6 +21,8 @@
     "test": "./scripts/test.js",
     "test:head": "npm run test -- --no-headless",
     "test:head:watch": "npm run test -- --no-headless --watch",
+    "test:types": "tsc --noEmit",
+    "test:types:watch": "tsc --noEmit --watch",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {

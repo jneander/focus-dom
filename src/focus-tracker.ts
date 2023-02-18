@@ -1,22 +1,43 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
+import type {Regions} from './regions'
+import type {Region} from './regions/region'
 import {findLastIndex} from './utils'
 
+type FocusRecord = {
+  $element: HTMLElement
+  lineage?: Region[]
+  region: Region
+}
+
 export class FocusTracker {
-  constructor(regions) {
+  /**
+   * This is for internal and testing purposes only.
+   *
+   * @type {FocusRecord[]}
+   */
+  _borrows: FocusRecord[]
+
+  private _regions: Regions
+
+  /**
+   * This is for testing purposes only.
+   *
+   * @type {(FocusRecord | null)}
+   */
+  _rootFocus: FocusRecord | null
+
+  constructor(regions: Regions) {
     this._regions = regions
 
     this._rootFocus = null
     this._borrows = []
   }
 
-  get currentRegion() {
+  get currentRegion(): Region | null {
     const {_currentFocus} = this
     return _currentFocus ? _currentFocus.region : null
   }
 
-  get $currentElement() {
+  get $currentElement(): HTMLElement | null {
     const {_currentFocus} = this
     return _currentFocus ? _currentFocus.$element : null
   }
@@ -26,7 +47,7 @@ export class FocusTracker {
    * inherits focus, ensure the current focus entry is present and has
    * the active element assigned to it.
    */
-  updateCurrentFocus(region, $element) {
+  updateCurrentFocus(region: Region, $element: HTMLElement): void {
     const {_currentFocus} = this
 
     if (_currentFocus == null) {
@@ -41,7 +62,7 @@ export class FocusTracker {
     }
   }
 
-  replaceRegion(previousRegion, nextRegion) {
+  replaceRegion(previousRegion: Region, nextRegion: Region): void {
     if (this._rootFocus && this._rootFocus.region === previousRegion) {
       this._rootFocus.region = nextRegion
       this._rootFocus.lineage = this._regions.getRegionLineage(nextRegion)
@@ -55,7 +76,7 @@ export class FocusTracker {
     })
   }
 
-  removeRegion(region) {
+  removeRegion(region: Region): void {
     /*
      * TODO: what happens when removing the "root" focus region?
      * There might be some meaningful overlap between FocusTracker and
@@ -71,11 +92,11 @@ export class FocusTracker {
     this._borrows = this._borrows.filter(entry => entry.region !== region)
   }
 
-  addBorrow(region, $element) {
+  addBorrow(region: Region, $element: HTMLElement): void {
     this._borrows.push({$element, region})
   }
 
-  removeLastBorrow(region) {
+  removeLastBorrow(region: Region): void {
     const lastIndex = findLastIndex(this._borrows, entry => entry.region === region)
 
     /*
@@ -90,7 +111,7 @@ export class FocusTracker {
 
   // PRIVILEGED
 
-  get _currentFocus() {
+  get _currentFocus(): FocusRecord {
     return this._borrows[this._borrows.length - 1] || this._rootFocus
   }
 }

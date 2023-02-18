@@ -1,14 +1,25 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
+import {Region, RegionOptions} from './region'
 
-import {Region} from './region'
+export interface RegionsConfig {
+  onRegionBlur: (region: Region, $element: HTMLElement) => void
+  onRegionFocus: (region: Region, $element: HTMLElement) => void
+}
 
 function noop() {
   // No behavior
 }
 
 export class Regions {
-  constructor(config) {
+  private _config: RegionsConfig
+
+  /**
+   * This exists for testing purposes only.
+   *
+   * @type {Region[]}
+   */
+  _regionList: Region[]
+
+  constructor(config: Partial<RegionsConfig> = {}) {
     this._config = {
       onRegionBlur: config.onRegionBlur || noop,
       onRegionFocus: config.onRegionFocus || noop,
@@ -20,13 +31,13 @@ export class Regions {
     this._handleRegionFocus = this._handleRegionFocus.bind(this)
   }
 
-  get activeRegion() {
+  get activeRegion(): Region | null {
     const {activeElement} = document
-    let containingRegion = null
+    let containingRegion: Region | null = null
 
     this._regionList.forEach(region => {
       if (
-        region.containsElement(activeElement) &&
+        region.containsElement(activeElement as HTMLElement) &&
         (containingRegion == null || containingRegion.containsRegion(region))
       ) {
         containingRegion = region
@@ -36,7 +47,7 @@ export class Regions {
     return containingRegion
   }
 
-  addRegion($container, options) {
+  addRegion($container: HTMLElement, options?: RegionOptions): Region {
     let region = this.getRegionForContainer($container)
 
     if (region) {
@@ -45,11 +56,11 @@ export class Regions {
 
     region = new Region($container, options)
 
-    region.blurHandler = event => {
-      this._handleRegionBlur(region, event.target)
+    region.blurHandler = (event: FocusEvent) => {
+      this._handleRegionBlur(region, event.target as HTMLElement)
     }
-    region.focusHandler = event => {
-      this._handleRegionFocus(region, event.target)
+    region.focusHandler = (event: FocusEvent) => {
+      this._handleRegionFocus(region, event.target as HTMLElement)
     }
 
     $container.addEventListener('blur', region.blurHandler, true)
@@ -60,7 +71,7 @@ export class Regions {
     return region
   }
 
-  removeRegion(region) {
+  removeRegion(region: Region): void {
     region.$container.removeEventListener('blur', region.blurHandler, true)
     region.$container.removeEventListener('focus', region.focusHandler, true)
 
@@ -74,11 +85,11 @@ export class Regions {
     })
   }
 
-  includes(region) {
+  includes(region: Region): boolean {
     return this._regionList.includes(region)
   }
 
-  regionOwnsElement(region, $element) {
+  regionOwnsElement(region: Region, $element: HTMLElement): boolean {
     if (!region.containsElement($element)) {
       return false
     }
@@ -89,23 +100,23 @@ export class Regions {
     )
   }
 
-  getRegionLineage(region) {
+  getRegionLineage(region: Region): Region[] {
     const containingRegions = this._regionList.filter(_region => _region.containsRegion(region))
     return containingRegions.sort((a, b) => (a.containsRegion(b) ? -1 : 1))
   }
 
-  getParentRegion(region) {
+  getParentRegion(region: Region): Region | null {
     const lineage = this.getRegionLineage(region)
     return lineage[lineage.length - 2] || null
   }
 
-  getChildRegions(region) {
+  getChildRegions(region: Region): Region[] {
     const childRegions = this._regionList.filter(
       _region => _region !== region && region.containsRegion(_region),
     )
 
     // Using the index, mark where a region is a confirmed grandchild.
-    const ruledOutMap = {}
+    const ruledOutMap: {[key: number]: Region | boolean} = {}
 
     for (let candidateIndex = 0; candidateIndex < childRegions.length; candidateIndex++) {
       if (ruledOutMap[candidateIndex]) {
@@ -131,12 +142,12 @@ export class Regions {
     return childRegions.filter((_region, index) => !ruledOutMap[index])
   }
 
-  getRegionForContainer($element) {
+  getRegionForContainer($element: HTMLElement): Region | null {
     return this._regionList.find(region => region.$container === $element) || null
   }
 
-  getRegionOwnerForElement($element) {
-    let containingRegion = null
+  getRegionOwnerForElement($element: HTMLElement): Region | null {
+    let containingRegion: Region | null = null
 
     this._regionList.forEach(region => {
       if (
@@ -150,7 +161,7 @@ export class Regions {
     return containingRegion
   }
 
-  getFallbacksForRegion(region) {
+  getFallbacksForRegion(region: Region): HTMLElement[] {
     const fallbacks = [...region.fallbacks]
 
     this.getChildRegions(region).forEach(childRegion => {
@@ -166,7 +177,7 @@ export class Regions {
     return fallbacks.map(fallback => fallback.$element)
   }
 
-  _handleRegionBlur(region, $element) {
+  _handleRegionBlur(region: Region, $element: HTMLElement): void {
     if ($element === document.activeElement) {
       /*
        * The element still has focus. Blur might have been the browser
@@ -180,7 +191,7 @@ export class Regions {
     }
   }
 
-  _handleRegionFocus(region, $element) {
+  _handleRegionFocus(region: Region, $element: HTMLElement): void {
     if (this.regionOwnsElement(region, $element)) {
       this._config.onRegionFocus(region, $element)
     }
