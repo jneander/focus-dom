@@ -8,5 +8,5 @@
     "sourceMap": false
   },
   "include": ["../src"],
-  "exclude": ["../src/**/*.spec.js", "../src/**/_specs_"]
+  "exclude": ["../src/**/*.spec.js", "../src/**/specs"]
 }
