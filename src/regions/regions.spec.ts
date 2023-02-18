@@ -1,7 +1,7 @@
 import {createContainer, renderString} from '@jneander/spec-utils-dom'
 import sinon, {SinonStub} from 'sinon'
 
-import {Regions} from '.'
+import {Regions} from './regions'
 import {Region} from './region'
 
 describe('Regions', () => {
