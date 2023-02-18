@@ -1,1 +1,1 @@
-export {Focus} from './Focus'
+export {Focus} from './focus'

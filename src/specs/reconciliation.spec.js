@@ -1,7 +1,7 @@
 import {createContainer, renderString} from '@jneander/spec-utils-dom'
 
-import {Regions} from '../Regions'
-import {Reconciliation} from '../Reconciliation'
+import {Regions} from '../regions'
+import {Reconciliation} from '../reconciliation'
 
 describe('Reconciliation', () => {
   let $container

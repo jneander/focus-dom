@@ -1,7 +1,7 @@
-import {FocusTracker} from '../FocusTracker'
-import {Reconciliation} from '../Reconciliation'
-import {Regions} from '../Regions'
-import {RegionWrapper} from './RegionWrapper'
+import {FocusTracker} from '../focus-tracker'
+import {Reconciliation} from '../reconciliation'
+import {Regions} from '../regions'
+import {RegionWrapper} from './region-wrapper'
 
 export class Focus {
   constructor() {
