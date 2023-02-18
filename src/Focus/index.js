@@ -1,9 +1,9 @@
-import FocusTracker from '../FocusTracker'
-import Reconciliation from '../Reconciliation'
-import Regions from '../Regions'
-import RegionWrapper from './RegionWrapper'
+import {FocusTracker} from '../FocusTracker'
+import {Reconciliation} from '../Reconciliation'
+import {Regions} from '../Regions'
+import {RegionWrapper} from './RegionWrapper'
 
-export default class Focus {
+export class Focus {
   constructor() {
     this.regions = new Regions({
       onRegionFocus: this._onRegionFocus.bind(this),

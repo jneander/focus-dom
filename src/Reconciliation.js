@@ -1,4 +1,4 @@
-export default class Reconciliation {
+export class Reconciliation {
   constructor(regions) {
     this._regions = regions
   }

@@ -1,6 +1,6 @@
 import {findLastIndex} from './utils'
 
-export default class FocusTracker {
+export class FocusTracker {
   constructor(regions) {
     this._regions = regions
 
