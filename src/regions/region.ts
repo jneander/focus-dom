@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 export class Region {
   constructor($container, {fallbackOrder = 0, fallbackRegion = true} = {}) {
     this.setContainer($container)

@@ -1,10 +1,17 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import {Region} from './region'
+
+function noop() {
+  // No behavior
+}
 
 export class Regions {
   constructor(config) {
     this._config = {
-      onRegionBlur: config.onRegionBlur || (() => {}),
-      onRegionFocus: config.onRegionFocus || (() => {}),
+      onRegionBlur: config.onRegionBlur || noop,
+      onRegionFocus: config.onRegionFocus || noop,
     }
 
     this._regionList = []

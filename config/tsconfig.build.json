@@ -1,12 +1,5 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "checkJs": false,
-    "declaration": false,
-    "emitDeclarationOnly": false,
-    "skipLibCheck": true,
-    "sourceMap": false
-  },
+  "extends": "../tsconfig.json",
   "include": ["../src"],
-  "exclude": ["../src/**/*.spec.js", "../src/**/specs"]
+  "exclude": ["../src/**/*.spec.*", "../src/**/specs"]
 }

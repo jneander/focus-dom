@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 export class Reconciliation {
   constructor(regions) {
     this._regions = regions
@@ -21,7 +24,7 @@ export class Reconciliation {
     const updatedRegions = exploredRegions.concat([region])
     const $fallbacks = this._regions.getFallbacksForRegion(region)
 
-    for (let $fallback of $fallbacks) {
+    for (const $fallback of $fallbacks) {
       const regionForContainerFallback = this._regions.getRegionForContainer($fallback)
 
       if (regionForContainerFallback) {

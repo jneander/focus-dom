@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import sinon from 'sinon'
 
 import {FocusTracker} from '../focus-tracker'
