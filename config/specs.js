@@ -3,7 +3,7 @@ const path = require('path')
 
 const {getFlag, getString} = require('@jneander/dev-utils-node').cli
 
-const webpack = require('./webpack.js')
+const webpack = require('./webpack')
 
 const CHROME_FLAGS = [
   '--use-mock-keychain',
